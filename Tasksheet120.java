@@ -5,26 +5,27 @@ public class Tasksheet120 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the parameters:" );
+        String params = scan.nextLine();
+        String[] inputArray = params.split(" ");
+        int[] params1 = new int [inputArray.length];
 
-        int param1 = scan.nextInt();
-        int param2 = scan.nextInt();
-        int param3 = scan.nextInt();
+        for (int i = 0; i < inputArray.length; i++){
+            params1[i] = Integer.parseInt(inputArray[i]);
+        }
 
-        int sum1 = allcumulativetotal(param1);
-        int sum2 = allcumulativetotal(param2);
-        int sum3 = allcumulativetotal(param3);
-        System.out.println("Cumulative sum of"+ param1 +"is: "+sum1);
-        System.out.println("Cumulative sum of"+ param2 +"is: "+sum2);
-        System.out.println("Cumulative sum of"+ param3 +"is: "+sum3);
-
-        int sums = sum1 + sum2 + sum3;
-        System.out.println("The of all Cumulative is: "+sums);
+        int total = allcumulativetotal(params1);
+        System.out.println("Total sum of Cumulative sums is: "+ total);
     }
 
     public static int allcumulativetotal(int... numbers) {
         int sum = 0;
-        for (int i = 1; i <= numbers[0]; i++){
-            sum += i;
+        for (int number : numbers){
+            int cumulativesum = 0;
+            for (int i = 1; i <= number; i++){
+                cumulativesum += i;
+            }
+            System.out.println("The Cumulative sum for "+number+" is: "+cumulativesum);
+            sum += cumulativesum;
         }
         return sum;
     }
